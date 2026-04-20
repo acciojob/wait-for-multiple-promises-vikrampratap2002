@@ -1,5 +1,6 @@
 let tbody = document.getElementById("output");
 let loadingRow = document.createElement("tr");
+loadingRow.id = "loading";
 let loadingCell = document.createElement("td");
 
 loadingCell.colSpan = 2;
@@ -28,7 +29,7 @@ let startTime = performance.now();
 
 Promise.all([p1,p2,p3]).then((results) => {
 	let endTime = performance.now();
-	let totalTime = (endTime - startTime) / 1000;
+	let totalTime = Math.max(...results);
 
 	tbody.innerHTML = "";
 
